@@ -19,3 +19,11 @@ down:
 .PHONY: ssh      # Enters the PHP Container
 ssh:
 	docker-compose -f build/docker/docker-compose.yml exec php sh
+
+.PHONY: test # Runs pipeline lints & tests inside the PHP Container
+test:
+	docker-compose -f build/docker/docker-compose.yml exec php sh -c "composer install && composer deploy"
+
+.PHONY: run # Runs the Game via bash script
+run:
+	docker-compose -f build/docker/docker-compose.yml exec php sh -c "composer install && ./beesinthetrap"

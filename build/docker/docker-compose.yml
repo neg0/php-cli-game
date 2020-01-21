@@ -7,6 +7,8 @@ services:
       context: ../..
       dockerfile: build/docker/php/Dockerfile
     tty: true
+    env_file:
+      - ../../.env
     volumes:
       - ./../../:/var/apps/getchip
     networks:
