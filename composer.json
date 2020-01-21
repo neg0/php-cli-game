@@ -1,0 +1,44 @@
+{
+    "name": "hadi/getchip",
+    "type": "project",
+    "license": "CC-BY-4.0",
+    "authors": [
+        {
+            "name": "Hadi Tajallaei",
+            "email": "tajallaei@gmail.com"
+        }
+    ],
+    "autoload": {
+      "psr-4": {
+        "Game\\": "src/"
+      }
+    },
+    "require": {
+        "symfony/console": "^5.0"
+    },
+    "autoload-dev": {
+      "psr-4": {
+        "Game\\Tests\\": "tests/"
+      }
+    },
+    "require-dev": {
+      "phpunit/phpunit": "^8.5",
+      "squizlabs/php_codesniffer": "^3.5",
+      "infection/infection": "^0.15.0"
+    },
+    "config": {
+      "bin-dir": "bin"
+    },
+    "scripts": {
+      "test" : "composer test:unit && composer test:service && composer test:mutation",
+      "lint": "composer lint:psr",
+      "deploy": "composer lint && composer test",
+
+      "test:unit" : "./bin/phpunit --testsuite Unit",
+      "test:service" : "./bin/phpunit --testsuite Service",
+      "test:cov": "./bin/phpunit --coverage-html 'coverage' --coverage-clover=coverage.xml",
+      "test:mutation": "./bin/infection --min-msi=60 --threads=4",
+
+      "lint:psr" : "./bin/phpcs --standard=PSR12 ./src && ./bin/phpcs --standard=PSR12 ./tests"
+    }
+}

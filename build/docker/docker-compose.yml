@@ -1,0 +1,17 @@
+version: "3"
+services:
+  php:
+    image: php-getchip:7.4.1
+    container_name: hadi-getchip-tech-test
+    build:
+      context: ../..
+      dockerfile: build/docker/php/Dockerfile
+    tty: true
+    volumes:
+      - ./../../:/var/apps/getchip
+    networks:
+      - getchip-tech-test-hadi
+
+networks:
+  getchip-tech-test-hadi:
+    driver: bridge
