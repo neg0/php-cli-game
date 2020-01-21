@@ -1,0 +1,13 @@
+# Files
+.env
+
+.phpunit.result.cache
+clover.xml
+
+infection.log
+
+# Directories
+vendor/
+bin/
+
+coverage/
